@@ -1,5 +1,7 @@
 require_relative '../models/book'
-class BooksController < BlocWorks::Controller
+require 'pry'
+
+class BooksController #< BlocWorks::Controller
   def welcome
     @book = Book.new
     @book.name = "Eloquent Ruby"
@@ -7,6 +9,11 @@ class BooksController < BlocWorks::Controller
   end
 
   def show
+    binding.pry
+    @book = Book.new
+    @book.name = "Eloquent Ruby"
+    @book.author = "Russ Olsen"
+    @book.pages = 4815
     render :show, book: @book
   end
 
