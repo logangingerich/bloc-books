@@ -1,25 +1,24 @@
 require_relative '../models/book'
 require 'pry'
 
-class BooksController #< BlocWorks::Controller
+class BooksController < BlocWorks::Controller
   def welcome
-    @book = Book.new
-    @book.name = "Eloquent Ruby"
-    render :welcome, book: @book
+    render :welcome, book: "Eloquent Ruby"
+  end
+
+  def index
+    render :index, books: "Book.all"
   end
 
   def show
-    binding.pry
-    @book = Book.new
-    @book.name = "Eloquent Ruby"
-    @book.author = "Russ Olsen"
-    @book.pages = 4815
-    render :show, book: @book
+    book = Book.new
+    book.name = "Eloquent Ruby"
+    book.author = 'Russ Olsen'
+    book.pages = 448
+    render :show, book: book
   end
 
   def new
-    @book = Book.new
-    render :new
   end
 
   def create
@@ -32,10 +31,6 @@ class BooksController #< BlocWorks::Controller
   end
 
   def destroy
-  end
-
-  def index
-    render :index, books: Book.all
   end
 
 end
